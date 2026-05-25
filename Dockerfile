@@ -1,9 +1,13 @@
+# Gunakan image PHP 8.3
 FROM php:8.3-cli
 
-# Update dan instal dependensi sistem termasuk driver MySQL
+# Update dan instal dependensi sistem:
+# - libpq-dev: Wajib untuk PostgreSQL
+# - libzip-dev: Untuk kompresi zip
 RUN apt-get update && apt-get install -y \
     git unzip zip curl libzip-dev nodejs npm \
-    && docker-php-ext-install zip pdo pdo_mysql
+    libpq-dev \
+    && docker-php-ext-install zip pdo pdo_mysql pdo_pgsql pgsql
 
 # Copy composer dari official image
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -13,7 +17,7 @@ WORKDIR /app
 # Copy source code ke container
 COPY . .
 
-# Membuat direktori yang diperlukan jika belum ada dan memberikan permission
+# Membuat direktori yang diperlukan dan memberikan permission
 RUN mkdir -p storage/framework/cache \
     storage/framework/sessions \
     storage/framework/views \
