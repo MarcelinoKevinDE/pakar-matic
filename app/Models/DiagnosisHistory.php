@@ -12,19 +12,21 @@ class DiagnosisHistory extends Model
     protected $table = 'diagnosis_histories';
 
     protected $fillable = [
-    'nama_user', 
-    'selected_symptoms', 
-    'symptom_details',
-    'kerusakan_id', 
-    'kerusakan_name', 
-    'certainty_factor', 
-    'confidence_level', 
-    'cf_calculation_steps'
-];
+        'nama_user', 
+        'selected_symptoms', 
+        'symptom_details',
+        'kerusakan_id', 
+        'kerusakan_name', 
+        'certainty_factor', 
+        'confidence_level', 
+        'cf_calculation_steps',
+        'ip_address', // Tambahkan ini
+        'user_agent'  // Tambahkan ini
+    ];
 
     protected $casts = [
-        'gejala_dipilih'       => 'array',
-        'hasil_diagnosa'       => 'array',
+        'selected_symptoms'    => 'array', // Sesuaikan dengan nama kolom yang benar
+        'symptom_details'      => 'array', 
         'cf_calculation_steps' => 'array',
     ];
 
