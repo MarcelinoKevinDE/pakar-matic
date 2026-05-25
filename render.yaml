@@ -1,16 +1,18 @@
 services:
   - type: web
     name: pakar-matic
-    env: php
+    runtime: docker
+
     buildCommand: "composer install --no-dev --optimize-autoloader && npm install && npm run build && php artisan migrate --force"
-    startCommand: "php -S 0.0.0.0:$PORT -t public"
+    startCommand: "php artisan serve --host=0.0.0.0 --port=$PORT"
+
     envVars:
       - key: APP_ENV
         value: production
       - key: APP_DEBUG
         value: "false"
       - key: APP_KEY
-        value: "base64:EWA1tzv8Vv279E6XMuJufXin8ZQw7fQbTMMNUA6BO44="
+        value: "base64:YOUR_KEY"
       - key: APP_SERVICES_CACHE
         value: /tmp
       - key: APP_CONFIG_CACHE
