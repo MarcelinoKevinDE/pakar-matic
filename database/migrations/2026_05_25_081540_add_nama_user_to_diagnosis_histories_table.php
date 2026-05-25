@@ -9,10 +9,12 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
 {
     Schema::table('diagnosis_histories', function (Blueprint $table) {
-        $table->string('nama_user')->nullable(); // Sesuaikan tipe data
+        if (!Schema::hasColumn('diagnosis_histories', 'nama_user')) {
+            $table->string('nama_user')->nullable();
+        }
     });
 }
 
