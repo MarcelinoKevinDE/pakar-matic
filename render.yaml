@@ -11,3 +11,9 @@ services:
         value: "false"
       - key: APP_KEY
         generate: true
+      - key: APP_SERVICES_CACHE
+        value: /tmp/cache
+      - key: APP_CONFIG_CACHE
+        value: /tmp/cache
+      - key: APP_VIEW_CACHE
+        value: /tmp/views
