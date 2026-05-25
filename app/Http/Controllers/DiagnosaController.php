@@ -117,11 +117,12 @@ class DiagnosaController extends Controller
         $gejalaDipilih = Gejala::whereIn('id', $selectedIds)->get();
 
         // Persist history (hanya jika ada hasil yang ditemukan)
+        // Persist history
         if (!empty($hasil)) {
             DiagnosisHistory::create([
-                'nama_user'            => $request->nama_user,
-                'gejala_dipilih'       => json_encode($gejalaDipilih), // Nama kolom baru sesuai migrasi
-                'hasil_diagnosa'       => json_encode($hasil),         // Nama kolom baru sesuai migrasi
+                'nama_user'            => $request->nama_user ?? 'Guest',
+                'gejala_dipilih'       => json_encode($gejalaDipilih->toArray()), // Tambahkan ->toArray()
+                'hasil_diagnosa'       => json_encode($hasil),
                 'cf_calculation_steps' => json_encode($cfSteps),
                 'ip_address'           => $request->ip(),
                 'user_agent'           => $request->userAgent(),
