@@ -120,12 +120,8 @@ class DiagnosaController extends Controller
         if (!empty($hasil)) {
             DiagnosisHistory::create([
                 'nama_user'            => $request->nama_user,
-                'selected_symptoms'    => json_encode($gejalaDipilih), 
-                'symptom_details'      => json_encode($gejalaDipilih), 
-                'kerusakan_id'         => $hasil[0]['kerusakan_id'],
-                'kerusakan_name'       => $hasil[0]['nama_kerusakan'],
-                'certainty_factor'     => $hasil[0]['cf'],
-                'confidence_level'     => $hasil[0]['level'],
+                'gejala_dipilih'       => json_encode($gejalaDipilih), // Nama kolom baru sesuai migrasi
+                'hasil_diagnosa'       => json_encode($hasil),         // Nama kolom baru sesuai migrasi
                 'cf_calculation_steps' => json_encode($cfSteps),
                 'ip_address'           => $request->ip(),
                 'user_agent'           => $request->userAgent(),
