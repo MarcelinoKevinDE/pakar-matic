@@ -12,7 +12,7 @@ class DiagnosisHistory extends Model
     protected $table = 'diagnosis_histories';
 
     protected $fillable = [
-    'user_name', 
+    'nama_user', 
     'selected_symptoms', 
     'symptom_details',
     'kerusakan_id', 

@@ -119,7 +119,7 @@ class DiagnosaController extends Controller
         // Persist history (hanya jika ada hasil yang ditemukan)
         if (!empty($hasil)) {
             DiagnosisHistory::create([
-                'user_name'            => $request->nama_user,
+                'nama_user'            => $request->nama_user,
                 'selected_symptoms'    => json_encode($gejalaDipilih), 
                 'symptom_details'      => json_encode($gejalaDipilih), 
                 'kerusakan_id'         => $hasil[0]['kerusakan_id'],
