@@ -12,12 +12,3 @@ services:
 
       - key: APP_KEY
         value: "base64:YOUR_KEY"
-
-      - key: APP_SERVICES_CACHE
-        value: /tmp
-
-      - key: APP_CONFIG_CACHE
-        value: /tmp
-
-      - key: APP_VIEW_CACHE
-        value: /tmp
