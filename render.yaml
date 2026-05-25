@@ -3,7 +3,7 @@ services:
     name: pakar-matic
     env: php
     buildCommand: "composer install --no-dev --optimize-autoloader && npm install && npm run build && php artisan migrate --force"
-    startCommand: "/usr/bin/php -S 0.0.0.0:$PORT -t public"
+    startCommand: "php -S 0.0.0.0:$PORT -t public"
     envVars:
       - key: APP_ENV
         value: production
@@ -12,8 +12,8 @@ services:
       - key: APP_KEY
         value: "base64:EWA1tzv8Vv279E6XMuJufXin8ZQw7fQbTMMNUA6BO44="
       - key: APP_SERVICES_CACHE
-        value: /tmp/cache
+        value: /tmp
       - key: APP_CONFIG_CACHE
-        value: /tmp/cache
+        value: /tmp
       - key: APP_VIEW_CACHE
-        value: /tmp/views
+        value: /tmp
