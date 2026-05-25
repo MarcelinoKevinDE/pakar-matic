@@ -1,16 +1,16 @@
 services:
   - type: web
     name: pakar-matic
-    runtime: php
+    env: php
     buildCommand: "composer install --no-dev --optimize-autoloader && npm install && npm run build && php artisan migrate --force"
-    startCommand: "/usr/bin/php -S 0.0.0.0:$PORT -t public public/index.php"
+    startCommand: "/usr/bin/php -S 0.0.0.0:$PORT -t public"
     envVars:
       - key: APP_ENV
         value: production
       - key: APP_DEBUG
         value: "false"
       - key: APP_KEY
-        generate: true
+        value: "base64:EWA1tzv8Vv279E6XMuJufXin8ZQw7fQbTMMNUA6BO44="
       - key: APP_SERVICES_CACHE
         value: /tmp/cache
       - key: APP_CONFIG_CACHE
